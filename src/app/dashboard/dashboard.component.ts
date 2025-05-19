@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MockDataService } from '../services/mock-data.service';
+import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   churnRateChartOptions: any = {};
   featureAdoptionChartOptions: any = {};
 
-  constructor(private mockDataService: MockDataService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -28,12 +28,12 @@ export class DashboardComponent implements OnInit {
 
   loadData() {
     // Load KPI Data
-    this.mockDataService.getKPIData().subscribe((data) => {
+    this.dataService.getKPIData().subscribe((data) => {
       this.kpiData = data;
     });
 
     // Load MRR Chart Data
-    this.mockDataService.getMRRData().subscribe((data) => {
+    this.dataService.getMRRData().subscribe((data) => {
       this.mrrChartOptions = {
         series: data.series,
         chart: {
@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
     });
 
     // Load User Growth Chart Data
-    this.mockDataService.getUserGrowthData().subscribe((data) => {
+    this.dataService.getUserGrowthData().subscribe((data) => {
       this.userGrowthChartOptions = {
         series: data.series,
         chart: {
@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit {
     });
 
     // Load Churn Rate Chart Data
-    this.mockDataService.getChurnRateData().subscribe((data) => {
+    this.dataService.getChurnRateData().subscribe((data) => {
       this.churnRateChartOptions = {
         series: [data],
         chart: {
@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
     });
 
     // Load Feature Adoption Chart Data
-    this.mockDataService.getFeatureAdoptionData().subscribe((data) => {
+    this.dataService.getFeatureAdoptionData().subscribe((data) => {
       this.featureAdoptionChartOptions = {
         series: data.series,
         chart: {
