@@ -1,0 +1,96 @@
+<div class="dashboard-container">
+  <h1>SaaS Performance Dashboard</h1>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-title">Total Users</div>
+      <div class="kpi-value">{{ kpiData.totalUsers | number }}</div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-title">Active Users</div>
+      <div class="kpi-value">{{ kpiData.activeUsers | number }}</div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-title">Monthly Revenue</div>
+      <div class="kpi-value">${{ kpiData.mrr | number }}</div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-title">Churn Rate</div>
+      <div class="kpi-value">{{ kpiData.churnRate }}%</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Monthly Recurring Revenue</h3>
+      <div id="mrr-chart">
+        <apx-chart
+          [series]="mrrChartOptions.series"
+          [chart]="mrrChartOptions.chart"
+          [colors]="mrrChartOptions.colors"
+          [dataLabels]="mrrChartOptions.dataLabels"
+          [stroke]="mrrChartOptions.stroke"
+          [xaxis]="mrrChartOptions.xaxis"
+          [yaxis]="mrrChartOptions.yaxis"
+          [tooltip]="mrrChartOptions.tooltip"
+        >
+        </apx-chart>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>User Growth</h3>
+      <div id="user-growth-chart">
+        <apx-chart
+          [series]="userGrowthChartOptions.series"
+          [chart]="userGrowthChartOptions.chart"
+          [colors]="userGrowthChartOptions.colors"
+          [plotOptions]="userGrowthChartOptions.plotOptions"
+          [dataLabels]="userGrowthChartOptions.dataLabels"
+          [stroke]="userGrowthChartOptions.stroke"
+          [xaxis]="userGrowthChartOptions.xaxis"
+          [yaxis]="userGrowthChartOptions.yaxis"
+          [fill]="userGrowthChartOptions.fill"
+          [tooltip]="userGrowthChartOptions.tooltip"
+        >
+        </apx-chart>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Churn Rate</h3>
+      <div id="churn-rate-chart">
+        <apx-chart
+          [series]="churnRateChartOptions.series"
+          [chart]="churnRateChartOptions.chart"
+          [plotOptions]="churnRateChartOptions.plotOptions"
+          [colors]="churnRateChartOptions.colors"
+          [fill]="churnRateChartOptions.fill"
+          [stroke]="churnRateChartOptions.stroke"
+          [labels]="churnRateChartOptions.labels"
+        >
+        </apx-chart>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Feature Adoption</h3>
+      <div id="feature-adoption-chart">
+        <apx-chart
+          [series]="featureAdoptionChartOptions.series"
+          [chart]="featureAdoptionChartOptions.chart"
+          [labels]="featureAdoptionChartOptions.labels"
+          [colors]="featureAdoptionChartOptions.colors"
+          [responsive]="featureAdoptionChartOptions.responsive"
+          [legend]="featureAdoptionChartOptions.legend"
+        >
+        </apx-chart>
+      </div>
+    </div>
+  </div>
+</div>
